@@ -9,11 +9,18 @@ from zad1.Reader import Reader
 
 class System:
     def __init__(self):
-        self.STANDARD_CONTEXT = {
+        self.STANDARD_READER_CONTEXT = {
             "Borrow book": self.borrow_book_loop,
             "Reserve book": self.reserve_book_loop,
             "Prolong book rental": self.prolong_book_rental,
-            "View catalog": self.view_catalog
+            "View catalog": self.view_catalog,
+        }
+        self.STANDARD_LIBRARIAN_CONTEXT = {
+            "placeholder": "placeholder"
+        }
+        self.STANDARD_CONTEXT = {
+            Reader: self.STANDARD_READER_CONTEXT,
+            Librarian: self.STANDARD_LIBRARIAN_CONTEXT
         }
 
     def login(self):
@@ -26,15 +33,26 @@ class System:
             case 'Reader':
                 return Reader(self.validate_credentials("data/readers.json"))
 
-    def reader_context(self, user):
-        print("reader context")
+    # def reader_context(self, user):
+    #
+    #     while True:
+    #         choice: str = self.show_context(list(self.STANDARD_READER_CONTEXT.keys()))
+    #
+    #         self.STANDARD_READER_CONTEXT[choice]()
+    #
+    # def librarian_context(self, user):
+    #     print("librarian context")
+
+    def view_context(self, user):
+        context: dict[str,] = self.STANDARD_CONTEXT[user.__class__]
+        # TODO maybe move contexts to User and librarian functions
+        print(context)
         while True:
-            choice: str = self.show_context(list(self.STANDARD_CONTEXT.keys()))
-
-            self.STANDARD_CONTEXT[choice]()
-
-    def librarian_context(self, user):
-        print("librarian context")
+            # TODO remove True and create more generic function that will take contexts
+            choice: str = self.show_context(list(context.keys()), True)
+            if choice == "Return":
+                break
+            context[choice]()
 
     def show_context(self, args, rtn=False):
         args_with_quit = deepcopy(args)
