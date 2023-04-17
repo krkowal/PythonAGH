@@ -19,6 +19,12 @@ class System:
             case 'Reader':
                 return Reader(self.validate_credentials("data/readers.json"))
 
+    def reader_context(self, user):
+        print("reader context")
+
+    def librarian_context(self, user):
+        print("librarian context")
+
     def show_context(self, args):
         args_with_quit = deepcopy(args)
         args_with_quit.append("Quit")
