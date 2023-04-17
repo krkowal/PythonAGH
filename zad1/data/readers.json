@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "email": "kowal",
+      "password": "123",
+      "borrowed_books": [
+        {
+          "id": 1,
+          "title": "Harry Potter",
+          "author": "J.K.Rowling",
+          "key_words": [
+            "fantasy",
+            "magic"
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Tom Sawyer",
+          "author": "Mark Twain",
+          "key_words": [
+            "adventure"
+          ]
+        }
+      ]
+    },
+    {
+      "email": "nowak",
+      "password": "321"
+    }
+  ]
+}
