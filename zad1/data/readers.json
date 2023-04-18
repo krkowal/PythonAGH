@@ -8,24 +8,33 @@
           "id": 1,
           "title": "Harry Potter",
           "author": "J.K.Rowling",
-          "key_words": [
+          "tags": [
             "fantasy",
             "magic"
-          ]
+          ],
+          "borrowed_by": "kowal",
+          "borrowed_until": "2023-05-01",
+          "reserved_by": "",
+          "reserved_until": ""
         },
         {
           "id": 2,
           "title": "Tom Sawyer",
           "author": "Mark Twain",
-          "key_words": [
+          "tags": [
             "adventure"
-          ]
+          ],
+          "borrowed_by": "kowal",
+          "borrowed_until": "2023-04-22",
+          "reserved_by": "",
+          "reserved_until": ""
         }
       ]
     },
     {
       "email": "nowak",
-      "password": "321"
+      "password": "321",
+      "borrowed_books": []
     }
   ]
 }

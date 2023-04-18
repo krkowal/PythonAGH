@@ -1,0 +1,29 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Harry Potter",
+      "author": "J.K.Rowling",
+      "tags": [
+        "fantasy",
+        "magic"
+      ],
+      "borrowed_by": "kowal",
+      "borrowed_until": "2023-05-01",
+      "reserved_by": "",
+      "reserved_until": ""
+    },
+    {
+      "id": 2,
+      "title": "Tom Sawyer",
+      "author": "Mark Twain",
+      "tags": [
+        "adventure"
+      ],
+      "borrowed_by": "kowal",
+      "borrowed_until": "2023-04-22",
+      "reserved_by": "",
+      "reserved_until": ""
+    }
+  ]
+}
