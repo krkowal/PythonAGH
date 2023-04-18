@@ -5,8 +5,4 @@ from zad1.System import System
 if __name__ == '__main__':
     sys = System()
     user = sys.login()
-    # if isinstance(user, Reader):
-    #     sys.reader_context(user)
-    # elif isinstance(user, Librarian):
-    #     sys.librarian_context(user)
-    sys.view_context(user)
+    sys.create_standard_context(user)
