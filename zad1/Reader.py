@@ -57,10 +57,11 @@ class Reader(User):
             return data[self.email]["borrowed_books"]
 
     def get_borrowed_books_titles(self):
-        return list(self.get_borrowed_books().keys())
+        return [book["title"] for book in self.get_borrowed_books()]
 
     def get_prolong_context(self):
-        return {title: self.prolong_book_loop for title in self.get_borrowed_books()}
+        return {f"Title: {book['title']}, id: {book['id']}": self.prolong_book_loop for book in
+                self.get_borrowed_books()}
 
     def prolong_books_rental_loop(self):
         while True:
@@ -69,19 +70,26 @@ class Reader(User):
                 break
             self.get_prolong_context()[choice](choice)
 
-    def prolong_book_loop(self, title: str):
+    def prolong_book_loop(self, title_string: str):
+        book_id = int(title_string.split(": ")[-1])
         while True:
             choice: str = manage_context(list(self.BOOK_CONTEXT.keys()), True)
             if choice == "Return":
                 break
-            self.prolong_book(title)
+            self.BOOK_CONTEXT[choice](book_id)
 
-    def prolong_book(self, title):
+    def prolong_book(self, book_id: int):
         try:
             with open(self.READER_DB, 'r+') as rf:
                 data = json.load(rf)
-                user = data["users"][self.email]
-                book = user["borrowed_books"][title]
+                borrowed_books = data["users"][self.email]["borrowed_books"]
+                book = {}
+                for b in borrowed_books:
+                    if book_id == b['id']:
+                        book = b
+                if book is {}:
+                    print("Book no longer exists in profile!")
+
                 return_date = book["borrowed_until"]
                 print(f"Current return date: {return_date}")
                 reserved = book["reserved_until"]
@@ -95,9 +103,7 @@ class Reader(User):
                     days = int(input("How many days (max 14) do you want to prolong the book?: "))
                 end_date = date.fromisoformat(return_date)
                 end_date += timedelta(days=days)
-                # print(end_date)
                 book["borrowed_until"] = end_date.__str__()
-                # print(user)
                 rf.seek(0)
                 rf.write(json.dumps(data, indent=4))
                 rf.truncate()
