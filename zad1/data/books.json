@@ -46,8 +46,8 @@
                 "fantasy",
                 "magic"
             ],
-            "borrowed_by": "kowal",
-            "borrowed_until": "2023-05-17",
+            "borrowed_by": "",
+            "borrowed_until": "",
             "reserved_by": "nowak",
             "reserved_until": "2023-06-14"
         }
