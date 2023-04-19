@@ -24,7 +24,25 @@ class Librarian(User):
         print("take in book return loop")
 
     def add_new_book(self):
-        print("add new book loop")
+        book = {}
+        book['title'] = input("Enter title: ")
+        book['author'] = input("Enter author: ")
+        book['tags'] = input("Enter tags (comma separated): ").strip().split(",")
+        with open(self.BOOKS_DB, 'r+') as bf:
+            books_data = json.load(bf)
+            book = {"id": max(books_data["books"], key=lambda b: b["id"])["id"] + 1} | book
+            book |= {
+                "borrowed_by": "",
+                "borrowed_until": "",
+                "reserved_by": "",
+                "reserved_until": ""
+            }
+            print(book)
+            books_data["books"].append(book)
+            bf.seek(0)
+            bf.write(json.dumps(books_data, indent=4))
+            bf.truncate()
+            print("Book was added successfully")
 
     def remove_book(self):
         print("remove book loop")
