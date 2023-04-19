@@ -1,15 +1,21 @@
+import json
+
 from zad1.User import User
+from utils import manage_context
 
 
 class Librarian(User):
     def __init__(self, user_data):
-        context = {
+        standard_context = {
             "Take in return": self.take_in_return,
             "Add new book": self.add_new_book,
             "Remove book": self.remove_book,
             "Add new reader": self.add_reader,
         }
-        super().__init__(user_data, context)
+        catalog_context = {
+            "Show data": self.show_book_data
+        }
+        super().__init__(user_data, standard_context, catalog_context)
 
     def __str__(self):
         return f"Librarian\nEmail: {self.email}\nPassword: {self.password}"
@@ -24,8 +30,28 @@ class Librarian(User):
         print("remove book loop")
 
     def add_reader(self):
-        print("add reader loop")
+        while True:
+            email = input("Enter email: ")
+            password = input("Enter password: ")
+            with open(self.READER_DB, 'r+') as rf:
+                reader_data = json.load(rf)
+                if email in reader_data["users"]:
+                    print("Users already exists!")
+                    continue
+                new_user = {
+                    "password": password,
+                    "borrowed_books": [],
+                    "reserved_books": []
+                }
+                reader_data["users"][email] = new_user
+                rf.seek(0)
+                rf.write(json.dumps(reader_data, indent=4))
+                rf.truncate()
+                print("User was successfully created!")
+                break
 
+    def show_book_data(self):
+        print("show book data loop")
 # context -> take in return, add new book, remove book, add reader, view catalog
 # take in return -> user_email and book_id
 # add new book -> book data

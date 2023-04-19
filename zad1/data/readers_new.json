@@ -27,13 +27,85 @@
                     "borrowed_until": "2023-04-26",
                     "reserved_by": "",
                     "reserved_until": ""
+                },
+                {
+                    "id": 4,
+                    "title": "Harry Potter II",
+                    "author": "J.K.Rowling",
+                    "tags": [
+                        "fantasy",
+                        "magic"
+                    ],
+                    "borrowed_by": "kowal",
+                    "borrowed_until": "2023-05-17",
+                    "reserved_by": "nowak",
+                    "reserved_until": "2023-06-14"
+                }
+            ],
+            "reserved_books": [
+                {
+                    "id": 3,
+                    "title": "Tomcio Paluch",
+                    "author": "ktos",
+                    "tags": [
+                        "adventure",
+                        "bajka"
+                    ],
+                    "borrowed_by": "nowak",
+                    "borrowed_until": "2023-04-22",
+                    "reserved_by": "kowal",
+                    "reserved_until": "2023-05-20"
                 }
             ]
         },
         "nowak": {
             "email": "nowak",
             "password": "321",
-            "borrowed_books": []
+            "borrowed_books": [
+                {
+                    "id": 3,
+                    "title": "Tomcio Paluch",
+                    "author": "ktos",
+                    "tags": [
+                        "adventure",
+                        "bajka"
+                    ],
+                    "borrowed_by": "nowak",
+                    "borrowed_until": "2023-04-22",
+                    "reserved_by": "kowal",
+                    "reserved_until": "2023-05-20"
+                }
+            ],
+            "reserved_books": [
+                {
+                    "id": 4,
+                    "title": "Harry Potter II",
+                    "author": "J.K.Rowling",
+                    "tags": [
+                        "fantasy",
+                        "magic"
+                    ],
+                    "borrowed_by": "kowal",
+                    "borrowed_until": "2023-05-17",
+                    "reserved_by": "nowak",
+                    "reserved_until": "2023-06-14"
+                }
+            ]
+        },
+        "test": {
+            "password": "test",
+            "borrowed_books": [],
+            "reserved_books": []
+        },
+        "test2": {
+            "password": "123",
+            "borrowed_books": [],
+            "reserved_books": []
+        },
+        "test3": {
+            "password": "123",
+            "borrowed_books": [],
+            "reserved_books": []
         }
     }
 }
