@@ -25,8 +25,6 @@ class User:
             if books is None:
                 book_list = self.get_book_list()
             else:
-                if books == []:
-                    print("")
                 book_list = books
             book_list.append("Search")
             choice: str = manage_context(book_list, True)
@@ -38,13 +36,13 @@ class User:
                 book_id = int(choice.split(": ")[-1])
                 self.get_book_context(book_id)
 
-    def get_book_context(self, id: int):
+    def get_book_context(self, book_id: int):
         while True:
             choice: str = manage_context(list(self.catalog_context), True)
             if choice == "Return":
                 break
 
-            self.catalog_context[choice](id)
+            self.catalog_context[choice](book_id)
 
     def search_catalog(self):
         phrase = input("Search by phrase: ")
@@ -53,4 +51,6 @@ class User:
             filtered_books = list(filter(lambda book: phrase.upper() in book["title"].upper() or phrase in book[
                 "author"].upper() or phrase.lower() in book["tags"], books_data))
             mapped_books = list(map(lambda book: f"Title: {book['title']}, id: {book['id']}", filtered_books))
+            if not mapped_books:
+                print("No matches")
             self.view_catalog(mapped_books)

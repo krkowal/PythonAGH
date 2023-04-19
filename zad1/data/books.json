@@ -50,6 +50,18 @@
             "borrowed_until": "",
             "reserved_by": "nowak",
             "reserved_until": "2023-06-14"
+        },
+        {
+            "id": 5,
+            "title": "test",
+            "author": "test",
+            "tags": [
+                "edasd"
+            ],
+            "borrowed_by": "test",
+            "borrowed_until": "2023-05-17",
+            "reserved_by": "kowal",
+            "reserved_until": "2023-06-14"
         }
     ]
 }

@@ -42,6 +42,18 @@
                     "borrowed_until": "2023-04-22",
                     "reserved_by": "kowal",
                     "reserved_until": "2023-05-20"
+                },
+                {
+                    "id": 5,
+                    "title": "test",
+                    "author": "test",
+                    "tags": [
+                        "edasd"
+                    ],
+                    "borrowed_by": "test",
+                    "borrowed_until": "2023-05-17",
+                    "reserved_by": "kowal",
+                    "reserved_until": "2023-06-14"
                 }
             ]
         },
@@ -78,6 +90,24 @@
                     "reserved_until": "2023-06-14"
                 }
             ]
+        },
+        "test": {
+            "password": "123",
+            "borrowed_books": [
+                {
+                    "id": 5,
+                    "title": "test",
+                    "author": "test",
+                    "tags": [
+                        "edasd"
+                    ],
+                    "borrowed_by": "test",
+                    "borrowed_until": "2023-05-17",
+                    "reserved_by": "kowal",
+                    "reserved_until": "2023-06-14"
+                }
+            ],
+            "reserved_books": []
         }
     }
 }

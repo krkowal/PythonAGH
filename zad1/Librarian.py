@@ -82,7 +82,32 @@ class Librarian(User):
             print("Book was added successfully")
 
     def remove_book(self):
-        print("remove book loop")
+        try:
+            book_id = int(input("Enter book's id: "))
+            with open(self.BOOKS_DB, 'r+') as bf:
+                with open(self.READER_DB, 'r') as rf:
+                    books_data = json.load(bf)
+                    reader_data = json.load(rf)
+                    book = {}
+                    for b in books_data["books"]:
+                        if b["id"] == book_id:
+                            book = b
+                    if book is {}:
+                        print("Book does not exist!")
+                        return False
+                    for u in reader_data["users"]:
+                        for b in reader_data["users"][u]["borrowed_books"]:
+                            if b["id"] == book_id:
+                                print("Book is borrowed, therefore cannot be removed!")
+                                return False
+                    books_data["books"].remove(book)
+                    bf.seek(0)
+                    bf.write(json.dumps(books_data, indent=4))
+                    bf.truncate()
+                    print("Book was successfully removed")
+                    return True
+        except ValueError:
+            print("Id should be a number!")
 
     def add_reader(self):
         while True:
@@ -105,11 +130,13 @@ class Librarian(User):
                 print("User was successfully created!")
                 break
 
-    def show_book_data(self):
-        print("show book data loop")
-# context -> take in return, add new book, remove book, add reader, view catalog
-# take in return -> book_id
-# add new book -> book data
-# remove book -> book_id
-# add reader -> reader data
-# view catalog -> books -> see if book is borrowed and who borrowed it and when it is available
+    def show_book_data(self, book_id: int):
+        with open(self.BOOKS_DB, 'r') as bf:
+            books_data = json.load(bf)
+            book = {}
+            for b in books_data["books"]:
+                if b["id"] == book_id:
+                    book = b
+            for field in book:
+                print(f"Book {field}: {book[field]}")
+            manage_context([], True)
