@@ -7,7 +7,7 @@ from utils import manage_context
 class Librarian(User):
     def __init__(self, user_data):
         standard_context = {
-            "Take in return": self.take_in_return,
+            "Return book": self.return_book,
             "Add new book": self.add_new_book,
             "Remove book": self.remove_book,
             "Add new reader": self.add_reader,
@@ -20,7 +20,7 @@ class Librarian(User):
     def __str__(self):
         return f"Librarian\nEmail: {self.email}\nPassword: {self.password}"
 
-    def take_in_return(self):
+    def return_book(self):
         try:
             book_id = int(input("Enter book's id: "))
             with open(self.BOOKS_DB, 'r+') as bf:
@@ -108,7 +108,7 @@ class Librarian(User):
     def show_book_data(self):
         print("show book data loop")
 # context -> take in return, add new book, remove book, add reader, view catalog
-# take in return -> user_email and book_id
+# take in return -> book_id
 # add new book -> book data
 # remove book -> book_id
 # add reader -> reader data
