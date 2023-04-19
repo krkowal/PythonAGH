@@ -111,10 +111,81 @@ class Reader(User):
             print("Book no longer appears in database!")
 
     def borrow_book(self, id):
-        print("borrow book loop")
+        try:
+            with open(self.BOOKS_DB, 'r+') as bf:
+                with open(self.READER_DB, 'r+') as rf:
+                    books_data = json.load(bf)
+                    reader_data = json.load(rf)
+                    book = {}
+                    for b in books_data["books"]:
+                        if b["id"] == id:
+                            book = b
+                    if book is {}:
+                        raise KeyError
+                    if book["borrowed_by"] != "" or book["reserved_by"] != "":
+                        print("Book is already borrowed or reserved!")
+                        return False
+                    book["borrowed_by"] = self.email
+                    book["borrowed_until"] = (date.today() + timedelta(days=28)).__str__()
+                    reader_data["users"][self.email]["borrowed_books"].append(book)
+                    bf.seek(0)
+                    bf.write(json.dumps(books_data, indent=4))
+                    bf.truncate()
+                    rf.seek(0)
+                    rf.write(json.dumps(reader_data, indent=4))
+                    rf.truncate()
+                    print(f"Book was borrowed successfully! Current end date of rental: {book['borrowed_until']}")
+                    return True
 
-    def reserve_book(self, id):
-        print("reserve book loop")
+        except KeyError:
+            print("Book no longer exists!")
+
+    def reserve_book(self, book_id):
+        try:
+            with open(self.BOOKS_DB, 'r+') as bf:
+                with open(self.READER_DB, 'r+') as rf:
+                    books_data = json.load(bf)
+                    reader_data = json.load(rf)
+                    book = {}
+
+                    for b in books_data["books"]:
+                        if b["id"] == book_id:
+                            book = b
+                    if book is {}:
+                        raise KeyError
+                    if book["reserved_by"] != "":
+                        print("Book is already reserved!")
+                        return False
+                    book_borrowed_by = book["borrowed_by"]
+                    if book_borrowed_by == self.email:
+                        print("Book has been already borrowed by You!")
+                        return False
+                    book["reserved_by"] = self.email
+
+                    if book_borrowed_by != "":
+                        user_borrowed_books = reader_data["users"][book_borrowed_by]["borrowed_books"]
+                        borrowed_book = {}
+                        for b in user_borrowed_books:
+                            if b['id'] == book_id:
+                                borrowed_book = b
+                        borrowed_book["reserved_by"] = self.email
+                        borrow_end = date.fromisoformat(book["borrowed_until"])
+                        reserve_end_date = (borrow_end + timedelta(days=28)).__str__()
+                        book["reserved_until"] = reserve_end_date
+                        borrowed_book["reserved_until"] = reserve_end_date
+                    reader_data["users"][self.email]["reserved_books"].append(book)
+                    bf.seek(0)
+                    bf.write(json.dumps(books_data, indent=4))
+                    bf.truncate()
+                    rf.seek(0)
+                    rf.write(json.dumps(reader_data, indent=4))
+                    rf.truncate()
+                    print(f"Book was reserved successfully! Current end date of reservation: {book['reserved_until']}")
+                    return True
+
+        except KeyError as err:
+            print(err)
+            print("Book no longer exists!")
 # context -> view catalog, my books
 # view catalog -> books , search by name, author, tags-> borrow, reserve
 # my books -> books -> prolong
