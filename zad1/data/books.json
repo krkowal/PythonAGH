@@ -21,6 +21,19 @@
         "adventure"
       ],
       "borrowed_by": "kowal",
+      "borrowed_until": "2023-04-26",
+      "reserved_by": "",
+      "reserved_until": ""
+    },
+    {
+      "id": 3,
+      "title": "Tomcio Paluch",
+      "author": "ktoś",
+      "tags": [
+        "adventure",
+        "bajka"
+      ],
+      "borrowed_by": "nowak",
       "borrowed_until": "2023-04-22",
       "reserved_by": "",
       "reserved_until": ""
