@@ -1,12 +1,11 @@
-import json
-
-from utils import manage_context
+from utils import manage_context, get_data
+from Constants import READER_DB, LIBRARIAN_DB, BOOKS_DB
 
 
 class User:
-    READER_DB = 'data/readers_new.json'
-    LIBRARIAN_DB = 'data/librarians.json'
-    BOOKS_DB = 'data/books.json'
+    READER_DB = READER_DB
+    LIBRARIAN_DB = LIBRARIAN_DB
+    BOOKS_DB = BOOKS_DB
 
     def __init__(self, user_data, context, catalog_context):
         self.email = user_data["email"]
@@ -16,9 +15,8 @@ class User:
         self.catalog_context = catalog_context
 
     def get_book_list(self):
-        with open(self.BOOKS_DB, 'r') as bf:
-            books_data = json.load(bf)
-            return [f"Title: {book['title']}, id: {book['id']}" for book in books_data["books"]]
+        books_data = get_data(self.BOOKS_DB)
+        return [f"Title: {book['title']}, id: {book['id']}" for book in books_data["books"]]
 
     def view_catalog(self, books=None):
         while True:
@@ -46,11 +44,10 @@ class User:
 
     def search_catalog(self):
         phrase = input("Search by phrase: ")
-        with open(self.BOOKS_DB, 'r') as bf:
-            books_data = json.load(bf)["books"]
-            filtered_books = list(filter(lambda book: phrase.upper() in book["title"].upper() or phrase in book[
-                "author"].upper() or phrase.lower() in book["tags"], books_data))
-            mapped_books = list(map(lambda book: f"Title: {book['title']}, id: {book['id']}", filtered_books))
-            if not mapped_books:
-                print("No matches")
-            self.view_catalog(mapped_books)
+        books_data = get_data(self.BOOKS_DB)["books"]
+        filtered_books = list(filter(lambda book: phrase.upper() in book["title"].upper() or phrase in book[
+            "author"].upper() or phrase.lower() in book["tags"], books_data))
+        mapped_books = list(map(lambda book: f"Title: {book['title']}, id: {book['id']}", filtered_books))
+        if not mapped_books:
+            print("No matches")
+        self.view_catalog(mapped_books)

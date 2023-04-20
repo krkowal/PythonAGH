@@ -9,7 +9,7 @@
                 "magic"
             ],
             "borrowed_by": "kowal",
-            "borrowed_until": "2023-05-01",
+            "borrowed_until": "2023-05-18",
             "reserved_by": "",
             "reserved_until": ""
         },
@@ -21,7 +21,7 @@
                 "adventure"
             ],
             "borrowed_by": "kowal",
-            "borrowed_until": "2023-04-26",
+            "borrowed_until": "2023-05-18",
             "reserved_by": "",
             "reserved_until": ""
         },
@@ -31,7 +31,7 @@
             "author": "ktos",
             "tags": [
                 "adventure",
-                "bajka"
+                "fairy tale"
             ],
             "borrowed_by": "nowak",
             "borrowed_until": "2023-04-22",
@@ -46,10 +46,10 @@
                 "fantasy",
                 "magic"
             ],
-            "borrowed_by": "",
-            "borrowed_until": "",
-            "reserved_by": "nowak",
-            "reserved_until": "2023-06-14"
+            "borrowed_by": "nowak",
+            "borrowed_until": "2023-05-18",
+            "reserved_by": "",
+            "reserved_until": ""
         },
         {
             "id": 5,
@@ -62,6 +62,18 @@
             "borrowed_until": "2023-05-17",
             "reserved_by": "kowal",
             "reserved_until": "2023-06-14"
+        },
+        {
+            "id": 6,
+            "title": "test_new",
+            "author": "test_new",
+            "tags": [
+                "asd"
+            ],
+            "borrowed_by": "kowal",
+            "borrowed_until": "2023-05-18",
+            "reserved_by": "nowak",
+            "reserved_until": "2023-06-15"
         }
     ]
 }

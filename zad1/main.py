@@ -1,5 +1,3 @@
-from zad1.Librarian import Librarian
-from zad1.Reader import Reader
 from zad1.System import System
 
 if __name__ == '__main__':

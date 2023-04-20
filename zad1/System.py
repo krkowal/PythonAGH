@@ -1,13 +1,12 @@
-import json
-from utils import manage_context
+from utils import manage_context, get_data
 from zad1.Librarian import Librarian
-from zad1.QuitError import QuitError
 from zad1.Reader import Reader
+from Constants import READER_DB, LIBRARIAN_DB
 
 
 class System:
-    READER_DB = 'data/readers_new.json'
-    LIBRARIAN_DB = 'data/librarians.json'
+    READER_DB = READER_DB
+    LIBRARIAN_DB = LIBRARIAN_DB
 
     def login(self):
         print("Welcome to our library!")
@@ -19,7 +18,7 @@ class System:
             case 'Reader':
                 return Reader(self.validate_credentials(self.READER_DB))
 
-    def create_standard_context(self, user):
+    def create_standard_context(self, user) -> None:
         context = user.standard_context
         while True:
             choice: str = manage_context(list(context.keys()))
@@ -27,16 +26,17 @@ class System:
                 break
             context[choice]()
 
-    def validate_credentials(self, db_path):
-        try:
-            print("Enter credentials!")
-            email = input("email: ")
-            password = input("password: ")
-            with open(db_path, 'r') as file:
-                data = json.load(file)
+    def validate_credentials(self, db_path: str) -> dict[str,]:
+        while True:
+            try:
+                print("Enter credentials!")
+                email = input("email: ")
+                password = input("password: ")
+                data = get_data(db_path)
                 users = data["users"]
-
                 if users[email]["password"] == password:
                     return {"email": email} | users[email]
-        except ValueError:
-            print("Email or password incorrect!")
+                else:
+                    raise KeyError
+            except KeyError:
+                print("Email or password incorrect!")

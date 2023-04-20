@@ -1,3 +1,4 @@
+import json
 from copy import deepcopy
 
 from zad1.QuitError import QuitError
@@ -20,3 +21,20 @@ def manage_context(args, rtn=False):
             print("Option does not exist! Choose again!")
         except ValueError:
             print("Enter a number!")
+
+
+def get_data(db_name):
+    with open(db_name, 'r') as file:
+        return json.load(file)
+
+
+def save_data(db_name, data):
+    with open(db_name, 'w') as file:
+        json.dump(data, file, indent=4)
+
+
+def get_book_by_id(book_id, books):
+    for b in books:
+        if book_id == b["id"]:
+            return b
+    return {}

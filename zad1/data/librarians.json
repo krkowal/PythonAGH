@@ -1,12 +1,10 @@
 {
-  "users": [
-    {
-      "email": "admin",
+  "users": {
+    "admin": {
       "password": "123"
     },
-    {
-      "email": "kowaladmin",
+    "kowaladmin": {
       "password": "321"
     }
-  ]
+  }
 }
