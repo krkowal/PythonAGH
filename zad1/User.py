@@ -22,9 +22,9 @@ class User:
         while True:
             if books is None:
                 book_list = self.get_book_list()
+                book_list.append("Search")
             else:
                 book_list = books
-            book_list.append("Search")
             choice: str = manage_context(book_list, True)
             if choice == "Return":
                 break
