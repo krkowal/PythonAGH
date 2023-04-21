@@ -1,4 +1,4 @@
-from zad1.System import System
+from System import System
 
 if __name__ == '__main__':
     sys = System()

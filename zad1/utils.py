@@ -1,7 +1,7 @@
 import json
 from copy import deepcopy
 
-from zad1.QuitError import QuitError
+from QuitError import QuitError
 
 
 def manage_context(args, rtn=False):

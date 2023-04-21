@@ -1,4 +1,4 @@
-from zad1.User import User
+from User import User
 from utils import manage_context, get_book_by_id, get_data, save_data
 
 

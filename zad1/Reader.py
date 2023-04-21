@@ -1,5 +1,5 @@
 from utils import manage_context, get_data, save_data, get_book_by_id
-from zad1.User import User
+from User import User
 from datetime import date, timedelta
 
 
