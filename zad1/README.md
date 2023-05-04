@@ -1,3 +1,7 @@
+# Standard Users
+- Librarian: email - admin, password - 123
+- Reader: email - kowal, password - 123
+
 # Assumptions
 
 - User logs in using email and password
@@ -15,3 +19,4 @@
 - Search finds books that have user input phrase in part of their name, part of their author name or one of their tags
 - Search example: phrase: tom -> books found: Tom Sawyer, Tomcio Paluch; phrase: harry -> books found: Harry Potter I,
   Harry Potter II; etc.
+- Email is just a mock (no verifying if email contains @ etc. when creating new user)
