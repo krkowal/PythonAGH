@@ -1,6 +1,7 @@
-from utils import manage_context, get_data, save_data, get_book_by_id
-from User import User
 from datetime import date, timedelta
+
+from User import User
+from utils import manage_context, get_data, save_data, get_book_by_id
 
 
 class Reader(User):
@@ -88,7 +89,7 @@ class Reader(User):
             books_data = get_data(self.BOOKS_DB)
             reader_data = get_data(self.READER_DB)
             book = get_book_by_id(book_id, books_data["books"])
-            if book is {}:
+            if book is {}:  # ten warunek nigdy nie będzie spełniony
                 raise KeyError
             if book["borrowed_by"] != "":
                 print("Book is already borrowed!")

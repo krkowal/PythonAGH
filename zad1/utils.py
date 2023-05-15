@@ -4,7 +4,7 @@ from copy import deepcopy
 from QuitError import QuitError
 
 
-def manage_context(args, rtn=False):
+def manage_context(args, rtn=False):  # rtn?
     args_with_quit = deepcopy(args)
     args_with_quit.append("Quit")
     if rtn:
@@ -24,7 +24,7 @@ def manage_context(args, rtn=False):
 
 
 def get_data(db_name):
-    with open(db_name, 'r') as file:
+    with open(db_name, 'r') as file:  # przesłonięcie symbolu wbudowanego
         return json.load(file)
 
 

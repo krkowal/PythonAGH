@@ -1,5 +1,5 @@
-from utils import manage_context, get_data
 from Constants import READER_DB, LIBRARIAN_DB, BOOKS_DB
+from utils import manage_context, get_data
 
 
 class User:
@@ -46,7 +46,7 @@ class User:
         phrase = input("Search by phrase: ")
         books_data = get_data(self.BOOKS_DB)["books"]
         filtered_books = list(filter(lambda book: phrase.upper() in book["title"].upper() or phrase in book[
-            "author"].upper() or phrase.lower() in book["tags"], books_data))
+            "author"].upper() or phrase.lower() in book["tags"], books_data))  # polecam list comprehension
         mapped_books = list(map(lambda book: f"Title: {book['title']}, id: {book['id']}", filtered_books))
         if not mapped_books:
             print("No matches")
