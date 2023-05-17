@@ -1,79 +1,79 @@
 {
-    "books": [
-        {
-            "id": 1,
-            "title": "Harry Potter I",
-            "author": "J.K.Rowling",
-            "tags": [
-                "fantasy",
-                "magic"
-            ],
-            "borrowed_by": "kowal",
-            "borrowed_until": "2023-05-18",
-            "reserved_by": "",
-            "reserved_until": ""
-        },
-        {
-            "id": 2,
-            "title": "Tom Sawyer",
-            "author": "Mark Twain",
-            "tags": [
-                "adventure"
-            ],
-            "borrowed_by": "kowal",
-            "borrowed_until": "2023-05-18",
-            "reserved_by": "",
-            "reserved_until": ""
-        },
-        {
-            "id": 3,
-            "title": "Tomcio Paluch",
-            "author": "ktos",
-            "tags": [
-                "adventure",
-                "fairy tale"
-            ],
-            "borrowed_by": "nowak",
-            "borrowed_until": "2023-04-22",
-            "reserved_by": "kowal",
-            "reserved_until": "2023-05-20"
-        },
-        {
-            "id": 4,
-            "title": "Harry Potter II",
-            "author": "J.K.Rowling",
-            "tags": [
-                "fantasy",
-                "magic"
-            ],
-            "borrowed_by": "nowak",
-            "borrowed_until": "2023-05-18",
-            "reserved_by": "",
-            "reserved_until": ""
-        },
-        {
-            "id": 5,
-            "title": "test",
-            "author": "test",
-            "tags": [
-                "edasd"
-            ],
-            "borrowed_by": "test",
-            "borrowed_until": "2023-05-17",
-            "reserved_by": "kowal",
-            "reserved_until": "2023-06-14"
-        },
-        {
-            "id": 6,
-            "title": "test_new",
-            "author": "test_new",
-            "tags": [
-                "asd"
-            ],
-            "borrowed_by": "kowal",
-            "borrowed_until": "2023-05-18",
-            "reserved_by": "nowak",
-            "reserved_until": "2023-06-15"
-        }
-    ]
+  "books": [
+    {
+      "id": 1,
+      "title": "Harry Potter I",
+      "author": "J.K.Rowling",
+      "tags": [
+        "fantasy",
+        "magic"
+      ],
+      "borrowed_by": "kowal",
+      "borrowed_until": "2023-05-18",
+      "reserved_by": "",
+      "reserved_until": ""
+    },
+    {
+      "id": 2,
+      "title": "Tom Sawyer",
+      "author": "Mark Twain",
+      "tags": [
+        "adventure"
+      ],
+      "borrowed_by": "kowal",
+      "borrowed_until": "2023-05-18",
+      "reserved_by": "",
+      "reserved_until": ""
+    },
+    {
+      "id": 3,
+      "title": "Tomcio Paluch",
+      "author": "ktos",
+      "tags": [
+        "adventure",
+        "fairy tale"
+      ],
+      "borrowed_by": "nowak",
+      "borrowed_until": "2023-04-22",
+      "reserved_by": "kowal",
+      "reserved_until": "2023-05-20"
+    },
+    {
+      "id": 4,
+      "title": "Harry Potter II",
+      "author": "J.K.Rowling",
+      "tags": [
+        "fantasy",
+        "magic"
+      ],
+      "borrowed_by": "nowak",
+      "borrowed_until": "2023-05-18",
+      "reserved_by": "",
+      "reserved_until": ""
+    },
+    {
+      "id": 5,
+      "title": "test",
+      "author": "test",
+      "tags": [
+        "edasd"
+      ],
+      "borrowed_by": "test",
+      "borrowed_until": "2023-05-17",
+      "reserved_by": "kowal",
+      "reserved_until": "2023-06-14"
+    },
+    {
+      "id": 6,
+      "title": "test_new",
+      "author": "test_new",
+      "tags": [
+        "asd"
+      ],
+      "borrowed_by": "kowal",
+      "borrowed_until": "2023-05-18",
+      "reserved_by": "nowak",
+      "reserved_until": "2023-06-15"
+    }
+  ]
 }

@@ -1,6 +1,7 @@
-from utils import manage_context, get_data, save_data, get_book_by_id
-from User import User
 from datetime import date, timedelta
+
+from User import User
+from utils import manage_context, get_data, save_data, get_book_by_id
 
 
 class Reader(User):

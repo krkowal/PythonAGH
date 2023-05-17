@@ -3,7 +3,7 @@ import re
 
 def lines_generator(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
+        lines = f.readlines()  # zły pomysł; proszę to zrobić z Wikipedią
         for line in lines:
             yield line
 
@@ -20,7 +20,7 @@ def count_words(file_path) -> list[tuple[str, int]]:
     words_count = {}
     for line in gen:
         words = clean_line(line)
-        if words is not []:
+        if words is not []:  # ten warunek nigdy nie będzie fałszywy
             for word in words:
                 if words_count.get(word) is not None:
                     words_count[word] = words_count[word] + 1
@@ -39,7 +39,7 @@ def get_items_from_ordered_list(words_list: list[tuple[str, int]], num: int) -> 
             else:
                 break
         return lst
-    except IndexError as err:
+    except IndexError:
         print("There are not that many different words in this book")
 
 
